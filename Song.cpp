@@ -1,21 +1,37 @@
 #include "Song.h"
 
-// TODO: finish to convert s to all lower case and return lower case string
 string convertToLowercase(string s) {
-
-	return "";
+	for(unsigned int i=0; i<s.size(); i++) {
+		s.at(i) = tolower(s.at(i));
+	}
+	return s;
 }
 
-// TODO: finish Song default value constructor
 Song::Song() {
-
+	title = "";
+	artist = "";
+	genre = "";
+	clip = "";
+	rating = 1;
+	next = NULL;
 }
 
-// TODO: finish Song explicit value constructor
-// converts title, artist, and genre params to lower case
-// calls setRating() to clip to bounds of [1, 5]
 Song::Song(string titleParam, string artistParam, string genreParam, string clipParam, int ratingParam) {
+	setTitle(titleParam);
+	setArtist(artistParam);
+	setGenre(genreParam);
+	setClip(clipParam);
+	setRating(ratingParam);
+	next = NULL;
+}
 
+Song::Song(const Song& other) {
+	title = other.title;
+	artist = other.artist;
+	genre = other.genre;
+	clip = other.clip;
+	rating = other.rating;
+	next = other.next; 
 }
 
 string Song::getTitle() {
@@ -69,11 +85,44 @@ void Song::setRating(int newRating) {
 	}
 }
 
-// TODO: finish to return string value for given attribute "title", "artist", "genre", "clip", or "rating"
-// call getters 
-// return empty string if attribute doesn't match 
+Song * Song::getNext() {
+	return next;
+}
+
+void Song::setNext(Song * newNext) {
+	next = newNext;
+}
+
 string Song::getStringAttributeValue(string attribute) {
-	
+	if (attribute == "title") {
+		getTitle();
+		return title;
+	}
+	if (attribute == "artist") {
+		getArtist();
+		return artist;
+	}
+	if (attribute == "genre") {
+		getGenre();
+		return genre;
+	}
+	if (attribute == "clip") {
+		getClip();
+		return clip;
+	}
+	if (attribute == "rating") {
+		getRating();
+		return to_string(rating);
+	}
 	return "";
+}
+
+void Song::displaySong() {
+	cout << "Title: " << title << endl;
+	cout << "Artist: " << artist << endl;
+	cout << "Genre: " << genre << endl;
+	cout << "Clip: " << clip << endl;
+	cout << "Rating: " << rating << endl;
+	cout << endl;
 }
 

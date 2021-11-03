@@ -9,29 +9,41 @@ using namespace std;
 
 class SongLibrary {
 	private:
-		int numSongs;
-		Song * songs;
-		// TODO: add your additional private attribute for the BONUS here
+		Song * head;
+		string sortAttribute; 
+
+		void deleteLibrary();
 		
-		// TODO: add your additional private member functions here
+		
+
 	public:
 		SongLibrary();
+		SongLibrary(const SongLibrary&); 
 		~SongLibrary();
-		int getNumSongs();
-		void setNumSongs(int);
-		Song * getSongsList();
-		void setSongsList(Song *);
+		Song * getHead(); 
+		void setHead(Song *); 
+		string getSortAttribute(); 
+		void setSortAttribute(string);
 		
 		void performLoad(string);
 		void performSave(string);
-		void performSort(string);
-		bool performSearch(string, string, Song *, int *);
-		void performAddSong(Song);
-		void performRemoveSong(int);
-		void performEditSong(int, string, string);
-		void performInsertSongInOrder(Song);
-
-		// TODO: add your additional public member functions here
+		void performSort(); 
+		Song * performSearch(string, string, bool *, int *); 
+		void performInsertSongInOrder(Song *); 
+		void performRemoveSong(Song *); 
+		void performEditSong(Song *, string, string); 
+		
+		void loadLibrary();
+		void saveLibrary();
+		void displayLibrary();
+		void sortLibrary();
+		void swapPositions(Song*, Song*, Song*);
+		void searchLibrary();
+		void playSongClipInLibrary();
+		void insertSongInLibraryOrder();
+		void removeSongFromLibrary();
+		void editSongInLibrary();
+		
 };
 
 #endif

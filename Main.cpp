@@ -1,7 +1,7 @@
-#include "PA5.h"
+#include "PA6.h"
 
 int main() {
-	runDigitalMusicManager();
+	runDigitalMusicManager(); // This just runs the program
 
 	return 0;
 }

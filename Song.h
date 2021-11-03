@@ -18,9 +18,11 @@ class Song {
 		string genre;
 		string clip;
 		int rating;
+		Song * next; 
 	public:
 		Song();
 		Song(string, string, string, string, int);
+		Song(const Song&); 
 		string getTitle();
 		void setTitle(string);
 		
@@ -35,6 +37,10 @@ class Song {
 		
 		int getRating();
 		void setRating(int);
+		
+		Song * getNext(); 
+		void setNext(Song *); 
+		
 		void displaySong();
 		
 		string getStringAttributeValue(string);
